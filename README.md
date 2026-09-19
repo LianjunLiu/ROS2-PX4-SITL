@@ -177,6 +177,10 @@ ros2 topic pub /wind_cmd geometry_msgs/msg/Vector3 "{x: 0.0, y: 0.0, z: 0.0}" --
 | `Docs/state_attack_design.md` | post-EKF 状态攻击设计 |
 | `Docs/fast_livo2_px4_integration.md` | FAST-LIVO2 坐标系、外参、PX4 桥接 |
 
+## 许可证
+
+本仓库自身的原创内容（`README`、`Docs/`、`src/x500_plus/`、配置文件）采用 [MIT 许可证](LICENSE)。各子模块遵循其上游许可证（BSD-3-Clause / GPL-2.0 / MIT / Apache-2.0 等），以各子模块仓库内的 LICENSE 文件为准。
+
 ## 授权声明
 
 本项目仅用于**授权的无人机安全研究**——在仿真环境中复现、评估攻击注入，为防御与检测研究提供可复现的实验平台。任何面向真实飞行器或未经授权系统的使用均与本项目无关，由使用者自行承担全部责任。
