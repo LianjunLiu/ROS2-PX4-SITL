@@ -15,8 +15,9 @@ __pycache__/
 # QGroundControl AppImage（180MB，官网可重新下载）；README 等其余文件正常提交
 QGroundControl/*.AppImage
 
-# 模拟数据目录（8.4GB，运行时生成，勿上传）
-data/
+# 模拟数据目录（rosbag 录制，GB 级，运行时生成，勿上传）；README 说明文档正常提交
+data/*
+!data/README.md
 
 # ============ IDE / 编辑器 ============
 # VSCode C++ IntelliSense 数据库（browse.vc.db 可达 2GB+，勿上传）
