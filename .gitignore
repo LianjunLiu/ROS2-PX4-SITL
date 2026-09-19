@@ -12,8 +12,8 @@ __pycache__/
 .mypy_cache/
 
 # ============ 大型二进制 / 外部可下载文件 ============
-# QGroundControl AppImage（180MB，官网可重新下载）
-QGroundControl/
+# QGroundControl AppImage（180MB，官网可重新下载）；README 等其余文件正常提交
+QGroundControl/*.AppImage
 
 # 模拟数据目录（8.4GB，运行时生成，勿上传）
 data/
