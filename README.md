@@ -71,6 +71,21 @@ bash PX4-Autopilot/Tools/setup/ubuntu.sh
 
 > 仅跑 SITL 无需 ESP32 Xtensa 工具链（那是 `esp32` 板目标专用）。
 
+### 版本
+
+| 组件 | 版本 |
+|---|---|
+| Ubuntu | 22.04 |
+| ROS2 | Humble |
+| gz-sim | 8.15.0（Harmonic） |
+| Python | 3.10.12 |
+| cmake | 3.22.1 |
+| GCC | 11.4.0 |
+| PX4-Autopilot | v1.17.0 + 攻击注入提交（`v1.17.0-1-g0d60a3e`） |
+| Micro-XRCE-DDS-Agent | v3.0.2 |
+| Sophus | 1.22.10（子模块钉在发行标签） |
+| 其余子模块 | 见各自 gitlink（子模块指针即精确版本） |
+
 ## 构建
 
 ```bash
