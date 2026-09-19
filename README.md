@@ -88,8 +88,10 @@ bash PX4-Autopilot/Tools/setup/ubuntu.sh
 
 ## 构建
 
+> **路径约定**：本仓库顶层目录为 `ROS2-PX4-SITL`。部分命令与 `Docs/` 内文档里写作 `/home/liu/Desktop/ROS2`（早期名称），两者指向同一目录，可互换理解。
+
 ```bash
-cd /home/liu/Desktop/ROS2
+cd /home/liu/Desktop/ROS2-PX4-SITL
 
 # 1) ROS2 工作区（只编 src/；切勿裸 `colcon build`，否则会连带编译 PX4 固件）
 colcon build --base-paths src --symlink-install
@@ -105,7 +107,7 @@ make px4_sitl
 
 ```bash
 # 终端 1：启动 SITL + gz-sim（x500_plus 模型，Penglai 世界，起飞点偏移）
-cd /home/liu/Desktop/ROS2/PX4-Autopilot
+cd /home/liu/Desktop/ROS2-PX4-SITL/PX4-Autopilot
 PX4_GZ_WORLD=Penglai PX4_GZ_MODEL_POSE="0,-8,0,0,0,0" make px4_sitl gz_x500_plus
 ```
 
@@ -191,6 +193,7 @@ ros2 topic pub /wind_cmd geometry_msgs/msg/Vector3 "{x: 0.0, y: 0.0, z: 0.0}" --
 | `Docs/attack_manager_reference.md` | 管理器指令解析、种子、状态 |
 | `Docs/state_attack_design.md` | post-EKF 状态攻击设计 |
 | `Docs/fast_livo2_px4_integration.md` | FAST-LIVO2 坐标系、外参、PX4 桥接 |
+| `Docs/git_commit_guide.md` | 提交改动到 GitHub 的流程指南（三层 git 结构） |
 
 ## 许可证
 
