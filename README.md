@@ -170,7 +170,7 @@ ros2 topic pub /wind_cmd geometry_msgs/msg/Vector3 "{x: 0.0, y: 0.0, z: 0.0}" --
 
 | 文档 | 内容 |
 |---|---|
-| `Docs/ROS2.md` | 环境搭建与运行全过程 |
+| `Docs/ROS2-PX4-SITL.md` | 环境搭建与运行全过程 |
 | `Docs/attack_injection_design.md` | 攻击注入系统总览（架构 / 协议 / 注入点 / 日志） |
 | `Docs/attack_primitive_reference.md` | 13 种原语公式、参数、边界 |
 | `Docs/attack_manager_reference.md` | 管理器指令解析、种子、状态 |
