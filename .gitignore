@@ -1,0 +1,32 @@
+# ============ colcon 构建产物 ============
+build/
+install/
+log/
+
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+
+# ============ 大型二进制 / 外部可下载文件 ============
+# QGroundControl AppImage（180MB，官网可重新下载）
+QGroundControl/
+
+# 模拟数据目录（8.4GB，运行时生成，勿上传）
+data/
+
+# ============ IDE / 编辑器 ============
+# VSCode C++ IntelliSense 数据库（browse.vc.db 可达 2GB+，勿上传）
+.vscode/browse.vc.db
+.vscode/browse.vc.db-shm
+.vscode/browse.vc.db-wal
+.vscode/browse.vc.db.lock
+
+# ============ 系统 / 临时文件 ============
+*.log
+.DS_Store
+*~
+*.swp

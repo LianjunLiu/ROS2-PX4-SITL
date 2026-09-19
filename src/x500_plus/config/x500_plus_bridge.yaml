@@ -1,0 +1,99 @@
+# ============================================================
+# x500_plus 传感器桥接清单（Gazebo gz-sim -> ROS2）
+#
+# 这是「需要桥接哪些消息」的完整清单，供 parameter_bridge 使用。
+# 当前 launch (x500_plus.launch.py) 通过 config_file 参数直接读取本文件，
+# 本文件即为桥接的唯一真源（无需再手动传位置参数）。
+# 未启用的条目先注释掉，需要时取消注释即可。
+# ============================================================
+
+# ---------- A. 传感器数据 ----------
+
+# 彩色相机
+- ros_topic_name: "/realsensed455f/color/image_raw"
+  gz_topic_name: "/realsensed455f/color/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# 彩色相机内参（标定 / 深度对齐用，与图像配对）
+# - ros_topic_name: "/realsensed455f/color/camera_info"
+#   gz_topic_name: "/realsensed455f/color/camera_info"
+#   ros_type_name: "sensor_msgs/msg/CameraInfo"
+#   gz_type_name: "gz.msgs.CameraInfo"
+#   direction: GZ_TO_ROS
+
+# 深度相机（R_FLOAT32 -> 32FC1，单位米；超量程为 +inf，需 depth_fixer 清洗）
+- ros_topic_name: "/realsensed455f/depth/image_raw"
+  gz_topic_name: "/realsensed455f/depth/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# 深度相机内参
+# - ros_topic_name: "/realsensed455f/depth/camera_info"
+#   gz_topic_name: "/realsensed455f/depth/camera_info"
+#   ros_type_name: "sensor_msgs/msg/CameraInfo"
+#   gz_type_name: "gz.msgs.CameraInfo"
+#   direction: GZ_TO_ROS
+
+# 深度相机导出的点云
+# - ros_topic_name: "/realsensed455f/depth/points"
+#   gz_topic_name: "/realsensed455f/depth/image_raw/points"
+#   ros_type_name: "sensor_msgs/msg/PointCloud2"
+#   gz_type_name: "gz.msgs.PointCloudPacked"
+#   direction: GZ_TO_ROS
+
+# MID-360S 雷达 3D 点云（gz 侧 gpu_lidar 自动发布在 <topic>/points）
+- ros_topic_name: "/mid360s/points/points"
+  gz_topic_name: "/mid360s/points/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# MID-360S 内置 IMU（FAST-LIVO 惯导输入，frame_id = mid360s_link，200 Hz）
+- ros_topic_name: "/mid360s/imu"
+  gz_topic_name: "/mid360s/imu"
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_type_name: "gz.msgs.IMU"
+  direction: GZ_TO_ROS
+
+# MID-360S 雷达 2D scan（LaserScan，gz 侧在 <topic> 本身）
+# - ros_topic_name: "/mid360s/scan"
+#   gz_topic_name: "/mid360s/points"
+#   ros_type_name: "sensor_msgs/msg/LaserScan"
+#   gz_type_name: "gz.msgs.LaserScan"
+#   direction: GZ_TO_ROS
+
+# ---------- B. 里程计 / 动态 TF ----------
+
+# 无人机里程计 -> odom_tf_broadcaster.py 转成 world->base_link 动态 TF
+- ros_topic_name: "/model/x500_plus_0/odometry"
+  gz_topic_name: "/model/x500_plus_0/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# 带协方差的里程计（下游若需要协方差）
+# - ros_topic_name: "/model/x500_plus_0/odometry_with_covariance"
+#   gz_topic_name: "/model/x500_plus_0/odometry_with_covariance"
+#   ros_type_name: "nav_msgs/msg/Odometry"
+#   gz_type_name: "gz.msgs.OdometryWithCovariance"
+#   direction: GZ_TO_ROS
+
+# ---------- C. 仿真时钟 ----------
+
+# 仿真时钟（RViz2 需要跟随仿真时间时启用）
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# ------------------------------------------------------------
+# 备注：gz 里还有一批 PX4 飞控内部传感器话题（IMU / magnetometer /
+# navsat / air_pressure / optical_flow / air_speed 等，都在
+# /world/Penglai/model/x500_plus_0/link/.../sensor/... 下），
+# 它们属于飞控内部闭环，不在「x500_plus 传感器可视化」范围内，故未列出。
+# 若将来要桥接，类型对应：gz.msgs.IMU -> sensor_msgs/msg/Imu 等。
+# ------------------------------------------------------------

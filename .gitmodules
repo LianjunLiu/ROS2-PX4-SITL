@@ -1,0 +1,34 @@
+[submodule "Dynamic_World_Generator"]
+	path = Dynamic_World_Generator
+	url = git@github.com:ali-pahlevani/Dynamic_World_Generator.git
+[submodule "Micro-XRCE-DDS-Agent"]
+	path = Micro-XRCE-DDS-Agent
+	url = git@github.com:eProsima/Micro-XRCE-DDS-Agent.git
+[submodule "Sophus"]
+	path = Sophus
+	url = git@github.com:strasdat/Sophus.git
+[submodule "Livox-SDK2"]
+	path = Livox-SDK2
+	url = git@github.com:Livox-SDK/Livox-SDK2.git
+[submodule "PX4-Autopilot"]
+	path = PX4-Autopilot
+	url = git@github.com:LianjunLiu/ROS2-PX4-Autopilot.git
+	branch = ROS2
+[submodule "src/px4_msgs"]
+	path = src/px4_msgs
+	url = git@github.com:LianjunLiu/ROS2-px4_msgs.git
+	branch = ROS2
+[submodule "src/px4_ros_com"]
+	path = src/px4_ros_com
+	url = git@github.com:PX4/px4_ros_com.git
+[submodule "src/FAST-LIVO2"]
+	path = src/FAST-LIVO2
+	url = git@github.com:LianjunLiu/ROS2-FAST-LIVO2.git
+	branch = ROS2
+[submodule "src/rpg_vikit"]
+	path = src/rpg_vikit
+	url = git@github.com:Robotic-Developer-Road/rpg_vikit.git
+[submodule "src/livox_ros_driver2"]
+	path = src/livox_ros_driver2
+	url = git@github.com:LianjunLiu/ROS2-livox_ros_driver2.git
+	branch = ROS2
